@@ -79,6 +79,8 @@ class Lock {
 
   private:
     char* name;				// for debugging
+    Semaphore* mutex;
+    Thread* holder;
     // plus some other stuff you'll need to define
 };
 
@@ -132,5 +134,6 @@ class Condition {
   private:
     char* name;
     // plus some other stuff you'll need to define
+    List* waitList;
 };
 #endif // SYNCH_H

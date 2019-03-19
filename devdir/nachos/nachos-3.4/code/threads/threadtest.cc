@@ -11,6 +11,7 @@
 
 #include "copyright.h"
 #include "system.h"
+#include "synch.h"
 //#include "elevatortest.h"
 
 // testnum is set in main.cc
@@ -132,6 +133,86 @@ void ThreadTest4(){
 }
 
 //----------------------------------------------------------------------
+// Producer and Consumer
+//     use Semaphore and Condition
+//----------------------------------------------------------------------
+Semaphore* mutex = new Semaphore("mutex", 1);
+Semaphore* empty = new Semaphore("empty", 2);
+Semaphore* full = new Semaphore("full", 0);
+void producer(int which){
+    int num = 5;
+    while(num--){
+        printf("producer is trying to insert an item..\n");
+        empty->P();
+        mutex->P();
+        printf("producer successfully insert an item!\n");
+        mutex->V();
+        full->V();
+    }
+}
+void consumer(int which){
+    int num = 5;
+    while(num--){
+        printf("consumer is trying to remove an item..\n");
+        full->P();
+        mutex->P();
+        printf("consumer successfully remove an item!\n");
+        mutex->V();
+        empty->V();
+    }
+}
+
+void ThreadTest6(){
+    DEBUG('t', "Entering ThreadTest6");
+    Thread* p = new Thread("producer");
+    Thread* c = new Thread("consumer");
+    c->Fork(consumer, 1);
+    p->Fork(producer, 1);
+    currentThread->Yield();
+}
+//--------------------------------------------------------------------//
+int buffer = 0;
+Condition* conp = new Condition("producer1");
+Condition* conc = new Condition("consumer1");
+Lock* lock = new Lock("lock1");
+void producer1(int which){
+    int num = 5;
+    while(num--){
+        printf("producer1 is trying to insert an item..\n");
+        lock->Acquire();
+        while(buffer == 2){
+            conp->Wait(lock);
+        }
+        buffer++;
+        printf("producer1 successfully insert an item!\n");
+        conc->Signal(lock);
+        lock->Release();
+    }
+}
+void consumer1(int which){
+    int num = 5;
+    while(num--){
+        printf("consumer1 is trying to remove an item..\n");
+        lock->Acquire();
+        while(buffer == 0){
+            conc->Wait(lock);
+        }
+        buffer--;
+        printf("consumer1 successfully remove an item!\n");
+        conp->Signal(lock);
+        lock->Release();
+    }
+}
+
+void ThreadTest7(){
+    DEBUG('t', "Entering ThreadTest7");
+    Thread* p = new Thread("producer1");
+    Thread* c = new Thread("consumer1");
+    c->Fork(consumer1, 1);
+    p->Fork(producer1, 1);
+    currentThread->Yield();
+}
+//----------------------------------------------------------------------
 // ThreadTest
 //     Invoke a test routine.
 //----------------------------------------------------------------------
@@ -151,6 +232,12 @@ ThreadTest()
             break;
         case 4:
             ThreadTest4();
+            break;
+        case 6:
+            ThreadTest6();
+            break;
+        case 7:
+            ThreadTest7();
             break;
         default:
             printf("No test specified.\n");
