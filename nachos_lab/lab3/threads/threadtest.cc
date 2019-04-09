@@ -291,8 +291,10 @@ ThreadTest()
             break;
         case 8:
             ThreadTest8();
+            break;
         case 9:
             ThreadTest9();
+            break;
         default:
             printf("No test specified.\n");
             break;

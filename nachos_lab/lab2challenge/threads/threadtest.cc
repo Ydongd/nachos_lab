@@ -140,7 +140,7 @@ void ThreadTest4(){
 }
 
 void ThreadTest5(){
-    DEBUG('t', "Entering ThreadTest4");
+    DEBUG('t', "Entering ThreadTest5");
     printf("Enterting ThreadTest5!\n");
     
     Thread* tmp[7];
@@ -152,6 +152,7 @@ void ThreadTest5(){
     }
     currentThread->Yield();
 }
+
 
 //----------------------------------------------------------------------
 // ThreadTest

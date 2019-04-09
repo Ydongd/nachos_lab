@@ -1,0 +1,160 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXFileReference section */
+		AA6CF35D224C815E00DABCA9 /* .DS_Store */ = {isa = PBXFileReference; lastKnownFileType = file; path = .DS_Store; sourceTree = "<group>"; };
+		AA6CF35E224C815E00DABCA9 /* test */ = {isa = PBXFileReference; lastKnownFileType = folder; path = test; sourceTree = "<group>"; };
+		AA6CF35F224C815E00DABCA9 /* bin */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bin; sourceTree = "<group>"; };
+		AA6CF360224C815E00DABCA9 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		AA6CF361224C815E00DABCA9 /* network */ = {isa = PBXFileReference; lastKnownFileType = folder; path = network; sourceTree = "<group>"; };
+		AA6CF362224C815E00DABCA9 /* filesys */ = {isa = PBXFileReference; lastKnownFileType = folder; path = filesys; sourceTree = "<group>"; };
+		AA6CF363224C815E00DABCA9 /* .Makefile.common.icloud */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = .Makefile.common.icloud; sourceTree = "<group>"; };
+		AA6CF364224C815E00DABCA9 /* vm */ = {isa = PBXFileReference; lastKnownFileType = folder; path = vm; sourceTree = "<group>"; };
+		AA6CF365224C815E00DABCA9 /* threads */ = {isa = PBXFileReference; lastKnownFileType = folder; path = threads; sourceTree = "<group>"; };
+		AA6CF366224C815E00DABCA9 /* machine */ = {isa = PBXFileReference; lastKnownFileType = folder; path = machine; sourceTree = "<group>"; };
+		AA6CF367224C815E00DABCA9 /* .Makefile.dep.icloud */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = .Makefile.dep.icloud; sourceTree = "<group>"; };
+		AA6CF368224C815E00DABCA9 /* userprog */ = {isa = PBXFileReference; lastKnownFileType = folder; path = userprog; sourceTree = "<group>"; };
+		AA6CF369224C815E00DABCA9 /* .vscode */ = {isa = PBXFileReference; lastKnownFileType = folder; path = .vscode; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		AA6CF357224C815E00DABCA9 = {
+			isa = PBXGroup;
+			children = (
+				AA6CF35D224C815E00DABCA9 /* .DS_Store */,
+				AA6CF35E224C815E00DABCA9 /* test */,
+				AA6CF35F224C815E00DABCA9 /* bin */,
+				AA6CF360224C815E00DABCA9 /* Makefile */,
+				AA6CF361224C815E00DABCA9 /* network */,
+				AA6CF362224C815E00DABCA9 /* filesys */,
+				AA6CF363224C815E00DABCA9 /* .Makefile.common.icloud */,
+				AA6CF364224C815E00DABCA9 /* vm */,
+				AA6CF365224C815E00DABCA9 /* threads */,
+				AA6CF366224C815E00DABCA9 /* machine */,
+				AA6CF367224C815E00DABCA9 /* .Makefile.dep.icloud */,
+				AA6CF368224C815E00DABCA9 /* userprog */,
+				AA6CF369224C815E00DABCA9 /* .vscode */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		AA6CF35C224C815E00DABCA9 /* code */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = AA6CF36A224C815E00DABCA9 /* Build configuration list for PBXLegacyTarget "code" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = "/Users/dongdong/Desktop/操作系统实习/devdir/nachos/nachos-3.4/code";
+			dependencies = (
+			);
+			name = code;
+			passBuildSettingsInEnvironment = 1;
+			productName = code;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXProject section */
+		AA6CF358224C815E00DABCA9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+			};
+			buildConfigurationList = AA6CF35B224C815E00DABCA9 /* Build configuration list for PBXProject "code" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AA6CF357224C815E00DABCA9;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA6CF35C224C815E00DABCA9 /* code */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		AA6CF359224C815E00DABCA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		AA6CF35A224C815E00DABCA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+		AA6CF36B224C815E00DABCA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = code;
+			};
+			name = Debug;
+		};
+		AA6CF36C224C815E00DABCA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = code;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA6CF35B224C815E00DABCA9 /* Build configuration list for PBXProject "code" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA6CF359224C815E00DABCA9 /* Debug */,
+				AA6CF35A224C815E00DABCA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA6CF36A224C815E00DABCA9 /* Build configuration list for PBXLegacyTarget "code" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA6CF36B224C815E00DABCA9 /* Debug */,
+				AA6CF36C224C815E00DABCA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA6CF358224C815E00DABCA9 /* Project object */;
+}
