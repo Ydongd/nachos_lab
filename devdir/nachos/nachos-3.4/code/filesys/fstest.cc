@@ -20,6 +20,7 @@
 #include "thread.h"
 #include "disk.h"
 #include "stats.h"
+#include "filehdr.h"
 
 #define TransferSize 	10 	// make it small, just to be difficult
 
@@ -111,8 +112,7 @@ Print(char *name)
 #define FileName 	"TestFile"
 #define Contents 	"1234567890"
 #define ContentSize 	strlen(Contents)
-#define FileSize 	((int)(ContentSize * 5000))
-
+#define FileSize 	((int)(ContentSize * 900))
 static void 
 FileWrite()
 {
@@ -172,6 +172,10 @@ FileRead()
 void
 PerformanceTest()
 {
+    /*OpenFile* nameFile = new OpenFile(2);
+    nameFile->setPosition(nameFile->hdr->FileLength());
+    char buffer[] = "test";
+    nameFile->Write(buffer, strlen(buffer));*/
     printf("Starting file system performance test:\n");
     stats->Print();
     FileWrite();
@@ -183,3 +187,53 @@ PerformanceTest()
     stats->Print();
 }
 
+void OpenFileTest(){
+    OpenFile *openFile1;
+    OpenFile *openFile2;
+    OpenFile *openFile3;
+    printf("Get openfile1..\n");
+    openFile1 = fileSystem->Open("ss");
+    printf("Get openfile2..\n");
+    openFile2 = fileSystem->Open("ss");
+    printf("Get openfile3..\n");
+    openFile3 = fileSystem->Open("ss");
+    printf("remove ss..\n");
+    fileSystem->Remove("ss");
+    printf("delete openfile1..\n");
+    delete openFile1;
+    printf("remove ss..\n");
+    fileSystem->Remove("ss");
+    printf("delete openfile2..\n");
+    delete openFile2;
+    printf("remove ss..\n");
+    fileSystem->Remove("ss");
+    printf("delete openfile3..\n");
+    delete openFile3;
+    printf("remove ss..\n");
+    fileSystem->Remove("ss");
+}
+
+void BlockTest(){
+    printf("Create file1, its size is 150..\n");
+    fileSystem->Create("file1", 150);
+    printf("Create file2, its size is 150..\n");
+    fileSystem->Create("file2", 150);
+    printf("Remove file1..\n");
+    fileSystem->Remove("file1");
+    printf("Create file3, its size is 300..\n");
+    fileSystem->Create("file3", 300);
+}
+
+void PipeTest1(){
+    char tt[SectorSize+1];
+    printf("input: ");
+    scanf("%s", tt);
+    fileSystem->WritePipe(tt, strlen(tt));
+}
+
+void PipeTest2(){
+    char tt[SectorSize+1];
+    int length = fileSystem->ReadPipe(tt);
+    tt[length] = '\0';
+    printf("output: %s\n", tt);
+}

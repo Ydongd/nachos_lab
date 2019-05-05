@@ -60,9 +60,10 @@ extern int testnum;
 // External functions used by this file
 
 extern void ThreadTest(void), Copy(char *unixFile, char *nachosFile);
-extern void Print(char *file), PerformanceTest(void);
+extern void Print(char *file), PerformanceTest(void), OpenFileTest(void), BlockTest(void);
 extern void StartProcess(char *file), ConsoleTest(char *in, char *out);
 extern void MailTest(int networkID);
+extern void PipeTest1(void), PipeTest2(void);
 
 //----------------------------------------------------------------------
 // main
@@ -87,7 +88,7 @@ main(int argc, char **argv)
     DEBUG('t', "Entering main");
     (void) Initialize(argc, argv);
     
-#ifdef THREADS
+/*#ifdef THREADS
     for (argc--, argv++; argc > 0; argc -= argCount, argv += argCount) {
         argCount = 1;
         switch (argv[0][1]) {
@@ -106,8 +107,8 @@ main(int argc, char **argv)
         }
     }
     
-    ThreadTest();
-#endif
+    //ThreadTest();
+#endif*/
     
     for (argc--, argv++; argc > 0; argc -= argCount, argv += argCount) {
         argCount = 1;
@@ -150,6 +151,20 @@ main(int argc, char **argv)
             fileSystem->Print();
         } else if (!strcmp(*argv, "-t")) {    // performance test
             PerformanceTest();
+        } else if (!strcmp(*argv, "-tt")) {    // performance test
+            OpenFileTest();
+        } else if (!strcmp(*argv, "-ttt")) {    // performance test
+            BlockTest();
+        } else if (!strcmp(*argv, "-pt")) {    // performance test
+            PipeTest1();
+        } else if (!strcmp(*argv, "-ptt")) {    // performance test
+            PipeTest2();
+        }
+        else if(!strcmp(*argv, "mkdir")){
+            fileSystem->CreateDir(*(argv + 1), 1);
+        }
+        else if(!strcmp(*argv, "cd")){
+            fileSystem->Change(*(argv + 1));
         }
 #endif // FILESYS
 #ifdef NETWORK
