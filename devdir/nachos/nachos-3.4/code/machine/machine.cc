@@ -235,7 +235,7 @@ int Machine::TLBPageFaultHandler(){
     unsigned int offset = (unsigned) virtAddr % PageSize;
     
     if(!currentThread->space->pageTable[vpn].valid){
-        printf("%s:virtual page %d not in physical memory..\n",currentThread->getName(), vpn);
+        //printf("%s:virtual page %d not in physical memory..\n",currentThread->getName(), vpn);
         return -1;
     }
     
@@ -326,3 +326,10 @@ void Machine::printPageBelong(){
         printf("%d ", pageBelong[i]);
     printf("\n");
 }
+
+void Machine::AddvancePC(){
+    WriteRegister(PrevPCReg, registers[PCReg]);
+    WriteRegister(PCReg, registers[PCReg] + 4);
+    WriteRegister(NextPCReg, registers[NextPCReg] + 4);
+}
+

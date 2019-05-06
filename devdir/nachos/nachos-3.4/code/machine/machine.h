@@ -180,6 +180,8 @@ class Machine {
     
     swapPage *swapArea;
     int swapNum;
+    
+    void AddvancePC();
 
 // Data structures -- all of these are accessible to Nachos kernel code.
 // "public" for convenience.
